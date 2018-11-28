@@ -119,7 +119,10 @@ router.post('/deletePost', (req, res)=>{
 
 router.post('/user', (req, res, next)=>{
     console.log(req.body)
-    fetch(`http://localhost:5000/graphql`, {
+    
+    var API_URL = req.hostname === 'localhost' ? 'http://localhost:5000' : 'http://52.79.116.2:5000'
+    console.log('api_url', API_URL)
+    fetch(`${API_URL}/graphql`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -173,7 +176,9 @@ router.post('/user', (req, res, next)=>{
 
 // this is not using anymore
 router.get('/all', (req,res,next)=>{
-    fetch(`http://localhost:5000/graphql`, {
+    var API_URL = req.hostname === 'localhost' ? 'http://localhost:5000' : 'http://52.79.116.2:5000'
+    console.log('api_url', API_URL)
+    fetch(`${API_URL}/graphql`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -207,7 +212,9 @@ router.get('/all', (req,res,next)=>{
 })
 
 router.get('/getNotice', (req, res, next)=> {
-    fetch('http://localhost:5000/graphql', {
+    var API_URL = req.hostname === 'localhost' ? 'http://localhost:5000' : 'http://52.79.116.2:5000'
+    console.log('api_url', API_URL)
+    fetch(`${API_URL}/graphql`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -229,6 +236,8 @@ router.get('/getNotice', (req, res, next)=> {
 })
 
 router.post('/pagePost', (req, res, next)=> {
+    var API_URL = req.hostname === 'localhost' ? 'http://localhost:5000' : 'http://52.79.116.2:5000'
+    console.log('api_url', API_URL)
     suggestPost.count().then(count => {
         var postPerPage = req.body.postPerPage
         var skip = count - (req.body.page + 1) * postPerPage
@@ -237,7 +246,7 @@ router.post('/pagePost', (req, res, next)=> {
             var skip = 0
             var isEnd = true
         }
-        fetch('http://localhost:5000/graphql', {
+        fetch(`${API_URL}/graphql`, {
         method:'POST',
         headers: {
             'Content-Type': 'application/json',

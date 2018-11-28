@@ -32,7 +32,6 @@ const schema = require('./schema/newSchema.js')
 const expressGraphQL = require('express-graphql')
 
 
-
 app.use(express.json())
 app.use(logger('common', {stream:accessLogStream}))
 app.use(middlewares.checkTokenSetUser)

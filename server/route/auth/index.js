@@ -21,7 +21,7 @@ function createTokenSendResponse(user, res, next) {
         username: user.username
     }
     jwt.sign(payload, process.env.TOKEN_SECRET, {
-        expiresIn: 60 * 5 //*60*24 //'1d'
+        expiresIn: 60 * 60 *24 //'1d'
     }, (err, token) => {
         if(err){
             respondError422(res, next)
