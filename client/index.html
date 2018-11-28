@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script> -->
+    <title>findseat Project</title>
+    
+</head>
+<body>
+    <!-- api 호출 -->
+    <!-- <script type="text/javascript" src="http://localhost:5000/api/daum/2"></script> -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a9affc4958c61e7183588480b06e7808&libraries=services"></script>
+    
+    
+    <div id="map" style="width:100%; height:500px;"></div>
+    
+    <!-- buttons -->
+    <!-- <button onclick="getLocation()">getLocation</button> -->
+    <!-- <button onclick="putMarkerOnMyL()">markerOnMyL</button> -->
+
+    <button onclick="getCafesMyLoc()">search cafe around my location</button>
+    <button onclick="getCafesMyMap()">search cafe in myMap</button>
+
+    <form action="" class="search-form">
+        <input type="text" id="keyword" name="keyword" placeholder="장소로 검색해주세요!">
+        <button>찾기!</button>
+    </form>
+    <div class ="label">
+        <span class="left"></span>
+            <span class="center">카카오!</span>
+        <span class="right"></span>
+    </div>
+
+
+    <script src="index.js"></script> 
+</body>
+</html>
