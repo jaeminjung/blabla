@@ -42,6 +42,13 @@ app.use('/board/comment', ratelimiter.boardLimiter)
 app.use('/board/suggestPost', ratelimiter.boardLimiter)
 // app.use('/status/addStatus', ratelimiter.addStatusLimiter)
 
+// app.get('/trigger', (req,res)=>{
+//     res.redirect('http://localhost:5005/')
+// })
+// app.post('/testing', (req, res)=>{
+//     console.log(req.body)
+//     res.json(req.body)
+// })
 
 app.get('/', (req, res)=>{
     res.json({

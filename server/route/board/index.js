@@ -214,6 +214,7 @@ router.get('/all', (req,res,next)=>{
 router.get('/getNotice', (req, res, next)=> {
     var API_URL = req.hostname === 'localhost' ? 'http://localhost:5000' : 'http://52.79.116.2:5000'
     console.log('api_url', API_URL)
+
     fetch(`${API_URL}/graphql`, {
         method: 'POST',
         headers: {
@@ -233,6 +234,7 @@ router.get('/getNotice', (req, res, next)=> {
         .then(data => {
             res.json(data)
         })
+        
 })
 
 router.post('/pagePost', (req, res, next)=> {

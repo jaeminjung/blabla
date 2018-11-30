@@ -38,6 +38,44 @@ router.get('/google', (req, res) => {
     // res.redirect("https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDpaZPJsBE2YWnDwVxUS34IjZGtMmEfRvc")
 })
 
+
+router.get('/locationFirebase', (req, res)=>{
+    // fetch('http://localhost:3000')
+    //     .then(r=>r.json())
+    //     .then(r=>{
+    //         res.json(r)
+    //     })
+    res.redirect('https://findseat-221319.firebaseapp.com/')    
+})
+
+router.get('/locationFinal', (req, res)=>{
+    res.json({
+        lat:_lat,
+        lng:_lng
+    })
+})
+
+router.post('/location', (req, res)=>{
+    console.log(req.body)
+    var _lat = req.body.lat
+    var _lng = req.body.lng
+    location = {
+        lat: req.body.lat,
+        lng: req.body.lng
+    }
+    res.json({
+        message: 'your location',
+        location
+    })
+    // fetch(`http://localhost:3000`)
+    //     .then(r => {
+    //         console.log(r)
+    //         r.json()})
+    //     .then(r => console.log('testing', r))
+    
+})
+
+
 router.get('/', (req, res)=>{
     res.json({
         message:'this is api router'
