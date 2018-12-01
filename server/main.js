@@ -37,7 +37,6 @@ app.use(logger('common', {stream:accessLogStream}))
 app.use(middlewares.checkTokenSetUser)
 
 app.use(express.static('public'));
-app.use(require('connect-history-api-fallback')())
 
 app.use('/auth/login', ratelimiter.loginLimiter)
 app.use('/auth/signup', ratelimiter.signupLimiter)
@@ -79,7 +78,7 @@ app.post('/', (req, res)=>{
         user: req.user
     })
 })
-
+app.use(require('connect-history-api-fallback')())
 app.get('/', (req, res)=>{
     res.sendFile(path.join(__dirname, '/public', 'index.html'))
 })
