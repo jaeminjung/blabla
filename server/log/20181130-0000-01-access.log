@@ -1,0 +1,8 @@
+::1 - - [30/Nov/2018:14:35:59 +0000] "POST /auth/login HTTP/1.1" 200 209
+::1 - - [30/Nov/2018:14:36:00 +0000] "GET / HTTP/1.1" 200 119
+::ffff:127.0.0.1 - - [30/Nov/2018:14:36:06 +0000] "POST /graphql HTTP/1.1" 200 10445
+::1 - - [30/Nov/2018:14:36:06 +0000] "POST /board/user HTTP/1.1" 200 10445
+::ffff:127.0.0.1 - - [30/Nov/2018:14:36:41 +0000] "POST /graphql HTTP/1.1" 200 4922
+::1 - - [30/Nov/2018:14:36:41 +0000] "POST /board/pagePost HTTP/1.1" 200 4922
+::1 - - [30/Nov/2018:14:38:34 +0000] "POST /post/myMapCafes HTTP/1.1" 200 18719
+::1 - - [30/Nov/2018:14:38:36 +0000] "POST /post/myMapCafes HTTP/1.1" 200 18719

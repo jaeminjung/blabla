@@ -36,26 +36,17 @@ app.use(express.json())
 app.use(logger('common', {stream:accessLogStream}))
 app.use(middlewares.checkTokenSetUser)
 
+app.use(express.static('public'));
+app.use(require('connect-history-api-fallback')())
+
 app.use('/auth/login', ratelimiter.loginLimiter)
 app.use('/auth/signup', ratelimiter.signupLimiter)
 app.use('/board/comment', ratelimiter.boardLimiter)
 app.use('/board/suggestPost', ratelimiter.boardLimiter)
 // app.use('/status/addStatus', ratelimiter.addStatusLimiter)
 
-// app.get('/trigger', (req,res)=>{
-//     res.redirect('http://localhost:5005/')
-// })
-// app.post('/testing', (req, res)=>{
-//     console.log(req.body)
-//     res.json(req.body)
-// })
 
-app.get('/', (req, res)=>{
-    res.json({
-        message:' / router ',
-        user: req.user
-    })
-})
+
 
 const boardRoute = require('./route/board/index.js')
 app.use('/board', boardRoute)
@@ -79,6 +70,19 @@ app.use('/graphql', expressGraphQL({
     schema,
     graphiql:true
 }))
+
+app.post('/', (req, res)=>{
+    
+    console.log('/ router', req.user)
+    res.json({
+        message:' / router ',
+        user: req.user
+    })
+})
+
+app.get('/', (req, res)=>{
+    res.sendFile(path.join(__dirname, '/public', 'index.html'))
+})
 
 function notFound(req, res, next) {
     res.status(404);

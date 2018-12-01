@@ -5,11 +5,13 @@ function checkTokenSetUser(req, res, next) {
     if (authHeader) {
         const token = authHeader.split(' ')[1]
         if (token) {
+            console.log('hit checkTokensetUser')
             jwt.verify(token, process.env.TOKEN_SECRET, (error, user)=> {
                 if (error) {
                     console.log(error)
                 }
                 req.user = user;
+                console.log('req.user', req.user)
                 
                 next()
             })

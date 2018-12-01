@@ -38,6 +38,22 @@ router.get('/', (req, res)=>{
     })
 })
 
+router.post('/checkToken', (req, res)=>{
+    const authoHeader = req.get('authorization')
+    if(authoHeader) {
+        const token = authoHeader.split(' ')[1]
+        if(token) {
+            jwt.verify(token, process.env.TOKEN_SECRET, (error, user)=>{
+                if(error){
+                    console.log(error)
+                }
+                
+                res.json(user)
+            })
+        }
+    }
+})
+
 router.post('/signup', (req, res, next)=>{
     const result = Joi.validate(req.body, schema)
     if(result.error === null){
