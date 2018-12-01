@@ -177,7 +177,7 @@ router.post('/thumbUp', middlewares.isLoggedIn, (req, res, next)=>{
                 //get 2points for thumbup
                 usersDB.findOne({username: req.user.username})
                         .then(userPoint => {
-                            userPoint.point += 2
+                            userPoint.point += 3
                             usersDB.findOneAndUpdate(
                                 {username: req.user.username},
                                 userPoint
