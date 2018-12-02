@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 
-app.use(require('connect-history-api-fallback')())
+// app.use(require('connect-history-api-fallback')())
 const cors = require('cors')
 const logger = require('morgan')
 
