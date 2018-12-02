@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 
+
 const cors = require('cors')
 const logger = require('morgan')
 
@@ -36,7 +37,7 @@ app.use(express.json())
 app.use(logger('common', {stream:accessLogStream}))
 app.use(middlewares.checkTokenSetUser)
 
-app.use(require('connect-history-api-fallback')())
+
 app.use(express.static('public'));
 
 app.use('/auth/login', ratelimiter.loginLimiter)
@@ -100,6 +101,7 @@ function errorHandler(err, req, res, next) {
 
 app.use(notFound);
 app.use(errorHandler);
+app.use(require('connect-history-api-fallback')())
 
 //port listening
 const port = process.env.PORT || 5000
