@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 
-
+app.use(require('connect-history-api-fallback')())
 const cors = require('cors')
 const logger = require('morgan')
 
@@ -101,7 +101,7 @@ function errorHandler(err, req, res, next) {
 
 app.use(notFound);
 app.use(errorHandler);
-app.use(require('connect-history-api-fallback')())
+
 
 //port listening
 const port = process.env.PORT || 5000
