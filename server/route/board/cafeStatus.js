@@ -114,11 +114,17 @@ router.post('/getStatus', (req, res, next)=>{
         {cafeId: req.body.id},
         {sort:{createdDate:1}}
         )
-        .then(cafeInfo => res.json(cafeInfo))
-            // .then(cafeInfo => cafeInfo.json())
-            // .then(result => {
-            //     res.json(result)
-            // })
+            .then(cafeInfo => {
+                console.log(cafeInfo)
+                if (cafeInfo.length>0) {
+                    res.json(cafeInfo[cafeInfo.length-1])
+                } else {
+                    res.json({message:'no data found'})
+                }
+                
+            })
+        // .then(cafeInfo => res.json(cafeInfo))
+            
 })
 
 

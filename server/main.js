@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 
-// app.use(require('connect-history-api-fallback')())
+const history = require('connect-history-api-fallback')
 const cors = require('cors')
 const logger = require('morgan')
 
@@ -22,6 +22,10 @@ const ratelimiter = require('./rateLimit/index.js')
 
 require('dotenv').config()
 
+app.use(history({
+    disableDotRule: true,
+    htmlAcceptHeaders: ['text/html', 'application/xhtml+xml']
+}))
 app.use(cors()) 
 
 // app.use(bodyParser.json())
