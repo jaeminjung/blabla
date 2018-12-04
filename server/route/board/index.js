@@ -120,7 +120,7 @@ router.post('/deletePost', (req, res)=>{
 router.post('/user', (req, res, next)=>{
     console.log(req.body)
     
-    var API_URL = req.hostname === 'localhost' ? 'http://localhost:5000' : 'http://findseat.net'
+    var API_URL = req.hostname === 'localhost' ? 'http://localhost:5000' : 'https://findseat.net'
     console.log('api_url', API_URL)
     fetch(`${API_URL}/graphql`, {
         method: 'POST',
@@ -176,7 +176,7 @@ router.post('/user', (req, res, next)=>{
 
 // this is not using anymore
 router.get('/all', (req,res,next)=>{
-    var API_URL = req.hostname === 'localhost' ? 'http://localhost:5000' : 'http://findseat.net'
+    var API_URL = req.hostname === 'localhost' ? 'http://localhost:5000' : 'https://findseat.net'
     console.log('api_url', API_URL)
     fetch(`${API_URL}/graphql`, {
         method: 'POST',
@@ -212,7 +212,7 @@ router.get('/all', (req,res,next)=>{
 })
 
 router.get('/getNotice', (req, res, next)=> {
-    var API_URL = req.hostname === 'localhost' ? 'http://localhost:5000' : 'http://findseat.net'
+    var API_URL = req.hostname === 'localhost' ? 'http://localhost:5000' : 'https://findseat.net'
     console.log('api_url', API_URL)
 
     fetch(`${API_URL}/graphql`, {
@@ -238,7 +238,7 @@ router.get('/getNotice', (req, res, next)=> {
 })
 
 router.post('/pagePost', (req, res, next)=> {
-    var API_URL = req.hostname === 'localhost' ? 'http://localhost:5000' : 'http://findseat.net'
+    var API_URL = req.hostname === 'localhost' ? 'http://localhost:5000' : 'https://findseat.net'
     console.log('api_url', API_URL)
     suggestPost.count().then(count => {
         var postPerPage = req.body.postPerPage
