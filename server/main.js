@@ -37,19 +37,19 @@ const schema = require('./schema/newSchema.js')
 const expressGraphQL = require('express-graphql')
 
 
-function getProtocol(req, res, next){
-    var proto = req.protocol
-    var url = req.hostname
-    console.log(proto)
-    console.log(url)
-    if (proto == 'http') {
-        res.redirect(`https://${url}`)
-    } else {
-        next()
-    }
-}
+// function getProtocol(req, res, next){
+//     var proto = req.protocol
+//     var url = req.hostname
+//     console.log(proto)
+//     console.log(url)
+//     if (proto == 'http') {
+//         res.redirect(`https://${url}`)
+//     } else {
+//         next()
+//     }
+// }
 
-app.use(getProtocol)
+// app.use(getProtocol)
 app.use(express.json())
 app.use(logger('common', {stream:accessLogStream}))
 app.use(middlewares.checkTokenSetUser)
