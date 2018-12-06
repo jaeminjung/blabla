@@ -1654,3 +1654,7 @@
 ::1 - - [06/Dec/2018:09:59:05 +0000] "POST /board/pagePost HTTP/1.1" 200 38
 ::ffff:127.0.0.1 - - [06/Dec/2018:10:01:24 +0000] "POST /graphql HTTP/1.1" 200 25
 ::1 - - [06/Dec/2018:10:01:24 +0000] "POST /board/pagePost HTTP/1.1" 200 38
+::1 - - [06/Dec/2018:10:58:57 +0000] "POST /post/myMapCafes HTTP/1.1" 200 18675
+::1 - - [06/Dec/2018:10:59:02 +0000] "POST /auth/login HTTP/1.1" 422 351
+::1 - - [06/Dec/2018:10:59:17 +0000] "POST /auth/login HTTP/1.1" 422 29
+::1 - - [06/Dec/2018:10:59:27 +0000] "POST /auth/login HTTP/1.1" 422 29
