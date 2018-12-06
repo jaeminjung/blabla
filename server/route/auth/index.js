@@ -58,33 +58,73 @@ router.post('/signup', (req, res, next)=>{
     const result = Joi.validate(req.body, schema)
     if(result.error === null){
         users.findOne({
-            username: req.body.username
+            username: req.body.username,
         }).then(user=>{
+            console.log('auth user', user)
             if(user) {
                 const error = new Error('username is already existed')
                 res.status(409)
                 next(error)
             } else{
-                bcrypt.hash(req.body.password.trim(), 11).then(hashedPassword=>{
-                    const newUser = {
-                        username: req.body.username,
-                        password: hashedPassword,
-                        email: req.body.email,
-                        createdDate: Date.now(),
-                        point: 0
+                users.findOne({
+                    email: req.body.email,
+                }).then(emailUser=>{
+                    console.log('auth emailuser', emailUser)
+                    if (emailUser){
+                        const error = new Error('email is already in used')
+                        res.status(409)
+                        next(error)
+                    } else {
+                        bcrypt.hash(req.body.password.trim(), 11).then(hashedPassword=>{
+                            const newUser = {
+                                username: req.body.username,
+                                password: hashedPassword,
+                                email: req.body.email,
+                                createdDate: Date.now(),
+                                point: 0
+                            }
+                            users.insert(newUser).then(insertedUser=>{
+                                createTokenSendResponse(insertedUser, res, next)
+                            })
+                        })
                     }
-                    users.insert(newUser).then(insertedUser=>{
-                        createTokenSendResponse(insertedUser, res, next)
-                    })
-                })
-                    
+                })                    
             }
-            
         })
     } else {
         res.status(422)
         next(result.error)
     }
+    
+    // if(result.error === null){
+    //     users.find({
+    //         username: req.body.username,
+    //     }).then(user=>{
+    //         if(user) {
+    //             const error = new Error('username is already existed')
+    //             res.status(409)
+    //             next(error)
+    //         } else{
+    //             bcrypt.hash(req.body.password.trim(), 11).then(hashedPassword=>{
+    //                 const newUser = {
+    //                     username: req.body.username,
+    //                     password: hashedPassword,
+    //                     email: req.body.email,
+    //                     createdDate: Date.now(),
+    //                     point: 0
+    //                 }
+    //                 users.insert(newUser).then(insertedUser=>{
+    //                     createTokenSendResponse(insertedUser, res, next)
+    //                 })
+    //             })
+                    
+    //         }
+            
+    //     })
+    // } else {
+    //     res.status(422)
+    //     next(result.error)
+    // }
 })
 
 function respondError422(res, next) {
