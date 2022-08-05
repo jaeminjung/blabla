@@ -24,7 +24,7 @@
     "joi": "^14.0.6",
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.11",
-    "mongoose": "^5.3.11",
+    "mongoose": "^5.7.5",
     "monk": "^6.0.6",
     "morgan": "^1.9.1",
     "node-fetch": "^2.2.0",
